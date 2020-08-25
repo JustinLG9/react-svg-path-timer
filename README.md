@@ -1,6 +1,6 @@
 # react-svg-path-timer
 
-Timer made with an SVG path. Easily display a timer in a more fun and eye-capturing way!
+Timer made with an SVG path. Easily display a timer in a more creative and interactive way!
 
 ![Basic Example](https://media.giphy.com/media/Rk2hDPZhjGhXGARzp1/giphy.gif)
 

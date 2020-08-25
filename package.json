@@ -1,6 +1,6 @@
 {
-  "name": "svg-path-timer",
-  "version": "1.0.2",
+  "name": "react-svg-path-timer",
+  "version": "1.0.0",
   "description": "Illustrated timer using svg path",
   "main": "lib/index.js",
   "scripts": {
