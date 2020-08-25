@@ -10,6 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/JustinLG9/react-svg-path-timer.git"
   },
+  "keywords": [
+    "react",
+    "svg",
+    "path",
+    "timer"
+  ],
   "author": "Justin Gargano",
   "license": "ISC",
   "bugs": {
