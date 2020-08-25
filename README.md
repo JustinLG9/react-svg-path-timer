@@ -2,10 +2,15 @@
 
 Timer made with an SVG path. Easily display a timer in a more fun and eye-capturing way!
 
+![Basic Example](https://media.giphy.com/media/ZcuZrkOucixCD0LsXT/giphy.gif)
+
 ## 🚀 Getting Started
 
 Using `npm`:
-`npm i react-svg-path-timer`
+
+```
+npm i react-svg-path-timer
+```
 
 ## ✨ Usage
 
@@ -17,14 +22,14 @@ import SvgPathTimer from "react-svg-path-timer";
 
 export default function MyComponent() {
   return (
-    <div style={{ width: "100px", height: "100px" }}>
-      <SvgPathTimer />
+    <div>
+      <SvgPathTimer strokeColor={"blue"} />
     </div>
   );
 }
 ```
 
-With no props provided, this would render a circle path with a time of 30 seconds. All default values can be seen in the prop section below.
+![Basic Example](https://media.giphy.com/media/ZcuZrkOucixCD0LsXT/giphy.gif)
 
 #### Utilizing Props
 
@@ -37,12 +42,15 @@ export default function MyComponent() {
   const [resetOnChange, setResetOnChange] = useState(0);
 
   function finishCallback() {
-    alert("The timer finished!");
+    document.getElementById("finish-message").innerHTML = "The timer finished!";
   }
 
   const containerStyles = {
+    height: "300px",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     padding: "50px",
   };
 
@@ -63,10 +71,13 @@ export default function MyComponent() {
         digitalTimerStyles={{ top: "10%" }}
       />
       <button onClick={() => setResetOnChange(resetOnChange + 1)}>Reset</button>
+      <div id={"finish-message"}></div>
     </div>
   );
 }
 ```
+
+![Custom Props Example](https://media.giphy.com/media/L39TSXpKdSI6Ad3Kds/giphy.gif)
 
 ## 📌 Props
 
