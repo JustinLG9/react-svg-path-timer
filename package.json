@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JustinLG9/svg-path-timer.git"
+    "url": "git+https://github.com/JustinLG9/react-svg-path-timer.git"
   },
   "author": "Justin Gargano",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JustinLG9/svg-path-timer/issues"
+    "url": "https://github.com/JustinLG9/react-svg-path-timer/issues"
   },
-  "homepage": "https://github.com/JustinLG9/svg-path-timer#readme",
+  "homepage": "https://github.com/JustinLG9/react-svg-path-timer#readme",
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "react": "^16.13.1"
