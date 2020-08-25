@@ -2,7 +2,7 @@
 
 Timer made with an SVG path. Easily display a timer in a more fun and eye-capturing way!
 
-![Basic Example](https://media.giphy.com/media/ZcuZrkOucixCD0LsXT/giphy.gif)
+![Basic Example](https://media.giphy.com/media/Rk2hDPZhjGhXGARzp1/giphy.gif)
 
 ## 🚀 Getting Started
 
@@ -29,7 +29,7 @@ export default function MyComponent() {
 }
 ```
 
-![Basic Example](https://media.giphy.com/media/ZcuZrkOucixCD0LsXT/giphy.gif)
+![Basic Example](https://media.giphy.com/media/Rk2hDPZhjGhXGARzp1/giphy.gif)
 
 #### Utilizing Props
 
