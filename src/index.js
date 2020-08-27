@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
-import "./svgpath.css";
+import "./index.css";
 
 export default function SvgPathTimer({
   time = 30,
