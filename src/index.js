@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
-import "./index.css";
+import "./svgpath.css";
 
 export default function SvgPathTimer({
   time = 30,
@@ -12,16 +12,20 @@ export default function SvgPathTimer({
   direction = "forwards",
   strokeColor = "white",
   pathColor = "grey",
-  strokeWidth = 1,
+  strokeWidth = 5,
   strokeLinecap = "butt",
   fill = "none",
   digitalTimer = true,
   digitalTimerStyles,
+  infinite = false,
+  infiniteReverse = false,
+  countUp = false,
   style,
   ...props
 }) {
   const [timeLeft, setTimeLeft] = useState(time);
   const [pathLength, setPathLength] = useState(0);
+  const [directionUpdater, setDirectionUpdater] = useState(direction);
   const svgId = useRef(getRandomString()).current;
   const pathId = useRef(getRandomString()).current;
   const strokeId = useRef(getRandomString()).current;
@@ -54,6 +58,35 @@ export default function SvgPathTimer({
     return "_" + Math.random().toString(36).substr(2, 9);
   }
 
+  function formatTimeLeft(displayTime) {
+    displayTime = Math.ceil(displayTime);
+
+    // Handle countUp
+    if (countUp) {
+      displayTime = time - timeLeft;
+      displayTime = Math.floor(displayTime);
+    }
+
+    const timeMinusHours = displayTime % 3600;
+
+    const hours = Math.floor(displayTime / 3600);
+    let minutes = Math.floor(timeMinusHours / 60);
+    let seconds = Math.ceil(timeMinusHours % 60);
+
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+    if (hours && minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+
+    if (hours) {
+      return `${hours}:${minutes}:${seconds}`;
+    } else {
+      return `${minutes}:${seconds}`;
+    }
+  }
+
   function startTimer() {
     timerInterval.current = setInterval(() => {
       if (test > 0) {
@@ -62,6 +95,15 @@ export default function SvgPathTimer({
       } else {
         clearInterval(timerInterval.current);
         finishCallback();
+
+        if (infinite) {
+          setTimeLeft(time);
+        } else if (infiniteReverse) {
+          const toggleDirection =
+            directionUpdater === "forwards" ? "backwards" : "forwards";
+          setDirectionUpdater(toggleDirection);
+          setTimeLeft(time);
+        }
       }
     }, 50);
   }
@@ -82,6 +124,7 @@ export default function SvgPathTimer({
     }
   }, [resetOnChange]);
 
+  // Starts timer after reset to full time (from resetOnChange)
   useEffect(() => {
     if (timeLeft === time && active && !firstUpdate.current) {
       startTimer();
@@ -114,7 +157,7 @@ export default function SvgPathTimer({
             stroke={strokeColor}
             d={d}
             strokeDashoffset={
-              direction === "backwards"
+              directionUpdater === "backwards"
                 ? `${pathLength * (timeLeft / time)}`
                 : `${pathLength - pathLength * (timeLeft / time)}`
             }
@@ -129,26 +172,4 @@ export default function SvgPathTimer({
       )}
     </div>
   );
-}
-
-function formatTimeLeft(time) {
-  time = Math.ceil(time);
-  const timeMinusHours = time % 3600;
-
-  const hours = Math.floor(time / 3600);
-  let minutes = Math.floor(timeMinusHours / 60);
-  let seconds = Math.ceil(timeMinusHours % 60);
-
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-  if (hours && minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  if (hours) {
-    return `${hours}:${minutes}:${seconds}`;
-  } else {
-    return `${minutes}:${seconds}`;
-  }
 }
